@@ -5,7 +5,19 @@ const yargs=require('yargs');
 const notes=require('./notes.js')
 
 
-const argv=yargs.argv;
+const argv=yargs.command('add','add a new note',{
+    title:{
+        describe: 'Title of Note',
+        demand:true,
+        alias: 't'
+    },
+    body:{
+        describe: 'body of Note',
+        demand: true,
+        alias: 'b'
+    }
+
+}).help().argv;
 const command=argv._[0];
 
 console.log("Starting app.js");
