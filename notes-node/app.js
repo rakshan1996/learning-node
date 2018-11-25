@@ -4,25 +4,23 @@ const yargs=require('yargs');
 
 const notes=require('./notes.js')
 
-const command=process.argv[2];
+
 const argv=yargs.argv;
-
-
-/* console.log(_.isString(true));
-console.log(_.isString('Rakshan == Devil'));
-var filterArray=_.uniq(['Devil',1,2,1,2,'Devil']);
-console.log(`this is Filtered Array:${filterArray}`);
- */
+const command=argv._[0];
 
 console.log("Starting app.js");
-//console.log(`command:${command}`);
 console.log(argv);
 
 
 if(command === 'add'){
-    //console.log("adding notes");
-    notes.addNote(argv.title,argv.body);
-    //notes.addNotes(argv.title,argv.body);
+    var note=notes.addNote(argv.title,argv.body);
+    if(note)
+    {
+        console.log(`${note.title} added to the file`);
+    }
+    else{
+        console.log('note title already exsist');
+    }
 }
 else if(command === 'list'){
     //console.log("listing all notes");
