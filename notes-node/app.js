@@ -16,6 +16,7 @@ console.log(`this is Filtered Array:${filterArray}`);
 
 console.log("Starting app.js");
 //console.log(`command:${command}`);
+console.log(argv);
 
 
 if(command === 'add'){
