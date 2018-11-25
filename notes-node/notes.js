@@ -1,5 +1,4 @@
 const fs=require('fs');
-console.log("starting notes.js");
 
 const fetchNotes=() =>{
     try{
@@ -18,8 +17,6 @@ const saveNotes=(notes) => {
 };
 
 const addNote= (title,body) => {
-//console.log(`adding note: ${title} => ${body}`)
-
 var notes=[];
 var note={
     title,
@@ -39,8 +36,8 @@ else
 }
 };
 
-const listNote=(title) => {
-    console.log(`there is no  such note to list with title ${title}`);
+const listNote=() => {
+    return fetchNotes();
 };
 
 const readNote=(title) => {

@@ -23,8 +23,13 @@ if(command === 'add'){
     }
 }
 else if(command === 'list'){
-    //console.log("listing all notes");
-    notes.listNote(argv.title);
+    var allNotes=notes.listNote();
+    
+    console.log(`Printing all ${allNotes.length} note(s)`);      
+    allNotes.forEach( (note) => {
+        console.log(`${note.title} => ${note.body}`);
+    });
+    
 
 }
 else if(command === 'delete'){
