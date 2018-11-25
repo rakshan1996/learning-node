@@ -28,8 +28,13 @@ else if(command === 'list'){
 
 }
 else if(command === 'delete'){
-    //console.log("deleting note");
-    notes.deleteNote(argv.title);
+    var note=notes.deleteNote(argv.title);
+    if(note){
+        console.log(`Note with title ${argv.title} deleted`);
+    }
+    else{
+        console.log("No Note with that title found");
+    }
 }
 else if(command === 'read'){
     //console.log('fetching single note ');
@@ -38,4 +43,7 @@ else if(command === 'read'){
 else{
     console.log("command not found");
 }
+
+
+
 console.log("finishing app");

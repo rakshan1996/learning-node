@@ -1,5 +1,5 @@
 const fs=require('fs');
-console.log("starting notes .js");
+console.log("starting notes.js");
 
 const fetchNotes=() =>{
     try{
@@ -29,8 +29,7 @@ notes=fetchNotes();
 var duplicateNotes= notes.filter((note) =>  note.title === title); 
 if(duplicateNotes.length != 0)
 {
-    console.log("Title already exsist");
-    
+    console.log("Title already exsist");    
 }
 else
 {   
@@ -50,6 +49,19 @@ const readNote=(title) => {
 
 const deleteNote=(title)=> {
     console.log(`note with ${title} deleted`);
+    var notes=fetchNotes();
+    var removeDuplicate=notes.filter((note)=> note.title !== title);
+    if(notes.length != removeDuplicate.length)
+    {
+        saveNotes(removeDuplicate);
+        return title;
+    }
+    else
+    {
+        console.log("no note was removed");
+
+    }
+    
 }
 
 module.exports = {
