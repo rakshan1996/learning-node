@@ -9,7 +9,7 @@ const argv=yargs.argv;
 const command=argv._[0];
 
 console.log("Starting app.js");
-console.log(argv);
+//console.log(argv);
 
 
 if(command === 'add'){
@@ -37,8 +37,15 @@ else if(command === 'delete'){
     }
 }
 else if(command === 'read'){
-    //console.log('fetching single note ');
-    notes.readNote(argv.title);
+    var note=notes.readNote(argv.title);
+    if(note)
+    {
+        console.log(`here are the matching Notes:${note.title } : ${note.body}`);
+    }
+    else{
+        console.log(`No notes with that title: ${argv.title} found`);
+    }
+    
 }
 else{
     console.log("command not found");

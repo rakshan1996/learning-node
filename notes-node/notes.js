@@ -44,11 +44,14 @@ const listNote=(title) => {
 };
 
 const readNote=(title) => {
-    console.log(`No reading material Found with this title name ${title}`);
+    var notes=fetchNotes();
+    var readNotes=notes.filter((note)=> note.title === title);
+    if(readNotes.length>0){
+        return readNotes[0];
+    }
 };
 
 const deleteNote=(title)=> {
-    console.log(`note with ${title} deleted`);
     var notes=fetchNotes();
     var removeDuplicate=notes.filter((note)=> note.title !== title);
     if(notes.length != removeDuplicate.length)
@@ -59,7 +62,6 @@ const deleteNote=(title)=> {
     else
     {
         console.log("no note was removed");
-
     }
     
 }
