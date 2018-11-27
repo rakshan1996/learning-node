@@ -6,5 +6,9 @@ request({
 },(error,response,body)=>{
     /* console.log(error);
     console.log(response); */
- console.log(body);
+ console.log(JSON.stringify(body,undefined,4));
+
+ console.log(`Address enterd: ${body.results[0].providedLocation.location}`)
+ 
+
 });
