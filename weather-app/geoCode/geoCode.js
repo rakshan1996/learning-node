@@ -1,5 +1,7 @@
 const request=require('request');
 const yargs=require('yargs');
+const keys=require('./keys');
+
 
 var latitude;
 var longtitude;
@@ -10,7 +12,7 @@ var geoCoding=(address,callback) =>{
     const encodedAddress=encodeURIComponent(address);
     
 request({
-    url:`http://www.mapquestapi.com/geocoding/v1/address?key=yLFBAtZxOtgcZSgAw2Ae1SSAXPG1hQZD&location=${encodedAddress}`,
+    url:`http://www.mapquestapi.com/geocoding/v1/address?key=${keys.mapKey}&location=${encodedAddress}`,
     json: true
 },(error,response,body)=>{
     /* /* console.log(error);

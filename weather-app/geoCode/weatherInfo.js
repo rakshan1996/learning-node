@@ -1,8 +1,14 @@
 const request=require('request');
+const keys=require('./keys');
+
+//const keys=appkeys;
+
+
+
 const weatherInfo=(geoLocation,callback)=>{
 var location=`${geoLocation.lat},${geoLocation.lng}`
     request({
-    url:`https://api.darksky.net/forecast/49daf92949a2c4a288021fa675beb509/${location}`,
+    url:`https://api.darksky.net/forecast/${keys.weatherKey}/${location}`,
     json:true
 },(error,response,body)=>{
     
