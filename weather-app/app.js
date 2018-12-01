@@ -15,13 +15,10 @@ a :{
 }
 }).help().alias('help','h').argv;
 
-geoCode.geoCoding(argv.a,(passLocation)=>{
-    weather.weatherInfo(passLocation,(tempra)=>{
-        console.log(`Temprature is ${tempra} degree celcius`)
-    });
-    
+geoCode.geoCoding(argv.a).then((passlocation)=>{
+    weather.weatherInfo(passlocation).then((temp)=>{
+        console.log(`Temprature is ${temp} degree celcius`);
+    })
+}).catch((errorMessage)=>{
+    console.log(errorMessage);
 });
-
-
-
-
