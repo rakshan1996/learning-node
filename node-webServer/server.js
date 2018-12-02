@@ -1,21 +1,32 @@
 const express=require('express');
+const hbs=require('hbs');
 
 var app=express();
-
+app.set('view engine','hbs');
 app.use(express.static(__dirname+'/public'));
 
 app.get('/',(req,res)=>{
 //res.send('<h1>Hello World Devil this side</h1>');
-res.send({
+/* res.send({
     name:'Devil',
     likes:[
         'Food',
         'Hiking'
     ]
+}) */
+
+res.render('home.hbs',{
+    Title:"Devil's Pc",
+    authorsName:"satan",
+    welcomeMessage:"This is the Entry to Hell Gate Proceed with caution",
+    Copyright: new Date().getUTCDate()
 })
 });
 app.get('/about',(req,res)=>{
-res.send("Hi i am Devil and i am 6 ft 2");
+res.render('about.hbs',{
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear()
+});
 });
 
 app.listen(3000,()=>{
