@@ -19,7 +19,7 @@ res.render('home.hbs',{
     Title:"Devil's Pc",
     authorsName:"satan",
     welcomeMessage:"This is the Entry to Hell Gate Proceed with caution",
-    Copyright: new Date().getUTCDate()
+    Copyright: new Date()
 })
 });
 app.get('/about',(req,res)=>{
