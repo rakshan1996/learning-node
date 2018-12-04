@@ -1,5 +1,6 @@
 const express=require('express');
 const hbs=require('hbs');
+const fs=require('fs');
 
 var app=express();
 hbs.registerPartials(__dirname+'/views/partials');
@@ -11,7 +12,18 @@ hbs.registerHelper('ScreamIt',(text)=>{
 });
 app.set('view engine','hbs');
 app.use(express.static(__dirname+'/public'));
+app.use((req,res,next)=>{
+    var now=new Date().toDateString();
+    var log=`${now}:${req.method} ${req.url}`;
+    console.log(log);
+    fs.appendFileSync('serverLog.txt',log + '\n');
+    next();
+});
 
+/* app.use((req,res,next)=>{
+    res.render('maintaince.hbs');
+});
+ */
 app.get('/',(req,res)=>{
 //res.send('<h1>Hello World Devil this side</h1>');
 /* res.send({
@@ -29,7 +41,7 @@ res.render('home.hbs',{
     //Copyright: new Date()
 })
 });
-app.get('/about',(req,res)=>{
+app.get('/about',(req,res)=>{ 
 res.render('about.hbs',{
     authorsName: 'About Page',
     //Copyright: new Date().getFullYear()
