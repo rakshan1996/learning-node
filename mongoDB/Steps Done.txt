@@ -1,0 +1,1 @@
+1) set up mongo db community server in local machine and downloaded Robo 3T Gui to have an easier access of the database
