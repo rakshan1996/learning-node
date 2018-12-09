@@ -16,9 +16,10 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,client)=>{
     }
     console.log("connected to mongo Server");
     const db=client.db('TodoApp');
-   /*  db.collection('Todos').insertOne({
-        text:'something to DO',
-        completed:false
+     /* db.collection('Todos').insertOne({
+        text:'Finish MongoDB part of node course ',
+        completed:false,
+        status:"OnGoing Hoping to complete it by today"
 
     },(err,result)=>{
         if(err){
@@ -26,18 +27,18 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,client)=>{
         }
 
         console.log(JSON.stringify(result.ops,undefined,2));
-    });
- */
-        /* db.collection('Users').insertOne({
+    }); */
+ 
+        db.collection('Users').insertOne({
             name:"Devil",
-            age:22,
-            location:"New Delhi"
+            age:21,
+            location:"Ludhiana"
         },(err,result)=>{
             if(err){
                 return console.log("unable to add collection",err);
             }
             console.log(JSON.stringify(result.ops[0]._id.getTimestamp(),undefined,2));
         });
-         */
+        
     client.close();
 });
